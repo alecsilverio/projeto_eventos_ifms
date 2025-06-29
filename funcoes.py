@@ -67,4 +67,36 @@ def cadastrar_novo_participante():
         print(f"\nParticipante {nome} cadastrado e inscrito no evento com sucesso!\n")
     except (ValueError, IndexError):
         print("Evento inválido. Participante cadastrado, mas não está inscrito em nenhum evento.")
-         
+
+# função para editar dados dos participantes
+from dados import participantes 
+def editar_participante():
+    try:
+        codigo = int(input("Digite o ID do participante que deseja editar: "))
+    except ValueError:
+        print("ID inválido. ")
+        return
+    if codigo not in participantes:
+        print("Participante não encontrado.")
+        return
+    participante = participantes[codigo]
+    
+    print("\Dados atuais:")
+    print(f"Nome: {participante['nome']}")
+    print(f"E-mail: {participante['email']}")
+    print(f"Preferências: {', '.join(participante['preferencias'])}")
+    
+    print("\nDigite os novos dados (aperte enter para manter o atual):")
+    novo_nome = input("Novo nome:")
+    novo_email = input("Novo e-mail:")
+    novas_preferencias = input("Novas preferências (separadas por vírgula):")
+    
+    if novo_nome.strip():
+        participante['nome'] = novo_nome.strip()
+    if novo_email.strip():
+        participante['email'] = novo_email.strip()
+    if novas_preferencias.strip():
+        participante['preferencias'] = [p.strip() for p in novas_preferencias.split(',')]   
+    
+    print("\nDados atualizados com sucesso!")
+    
