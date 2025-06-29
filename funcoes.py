@@ -40,6 +40,31 @@ def buscar_participantes_por_codigo():
             print(f" - {nome_evento}")
     else: 
         print("Este participante ainda não está inscrito em nenhum evento.")
-            
     
+# funçao para cadastrar novo participante
+from dados import eventos, participantes
+def cadastrar_novo_participante():
+    global participantes 
     
+    nome = input("Digite o nome do participante:")
+    email = input("Digite o email do participante:")
+    preferencias = input("Digite as preferências do partipante: ").split(',')
+    
+    novo_id = max(participantes.keys()) + 1
+    participantes[novo_id] ={
+        'nome': nome.strip(),
+        'email': email.strip(),
+        'preferencias': [p.strip() for p in preferencias]
+    }
+    
+    print("\nEventos disponíveis:")
+    for i, evento in enumerate(eventos, start=1):
+        print(f"{i}. {evento['nome']}")
+    
+    try:
+        escolha = int(input("Escolha um evento para inscrever o participante (número):"))
+        eventos[escolha - 1]['participantes'].append(novo_id)
+        print(f"\nParticipante {nome} cadastrado e inscrito no evento com sucesso!\n")
+    except (ValueError, IndexError):
+        print("Evento inválido. Participante cadastrado, mas não está inscrito em nenhum evento.")
+         
