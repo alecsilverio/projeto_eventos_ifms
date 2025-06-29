@@ -142,9 +142,55 @@ def mostrar_estatisticas():
     
 #------------------------------------------------------------------
 
-
-
+# função para remover eventos
+from dados import eventos
+def remover_evento():
+    print("\n==== Remover Evento ====")
+    for i, evento in enumerate(eventos, start=1):
+        print(f"{i}. {evento['nome']} ({evento['data']})")
+    
+    try: 
+        escolha = int(input("Digite o número do evento que deseja remover:"))
+        if 1 <= escolha <= len(eventos):
+            eventos_removido = eventos.pop(escolha - 1)
+        else: 
+            print("Número invalido.")
+    except ValueError:
+        print("Entrada inválida. Digite um número.")
         
-        
+#------------------------------------------------------------------
+
+#função para remover participantes
+from dados import participantes, eventos 
+def remover_participante():
+    print("\n==== Remover Participante ====")
+    try:
+        codigo = int(input("Digite o ID do participante que deseja remover:"))
+        if codigo not in participantes:
+            print("Participante não encontrado.")
+            return
+      
+        nome = participantes[codigo]['nome']
+        confirmacao= input(f"Tem certeza que deseja remover {nome}?  (s/n): ").lower()
+        if confirmacao == 's':
+         
+             # Remover participante dos eventos
+            for evento in eventos:
+                 if codigo in evento['participantes']:
+                     evento['participantes'].remove(codigo)
+                 
+            # Remover participante do dicionário
+            del participantes[codigo]
+            print(f"Participante '{nome}' removido com sucesso!")
+
+        else:
+            print("Remoção cancelada.")
+    
+    except ValueError:
+        print("ID inválido. Digite um número inteiro.")
+             
+            
+       
+
         
         
