@@ -188,9 +188,35 @@ def remover_participante():
     
     except ValueError:
         print("ID inválido. Digite um número inteiro.")
-             
-            
-       
 
-        
-        
+#------------------------------------------------------------------
+
+# função para cadastrar novo evento
+from dados import eventos, participantes
+def cadastrar_evento():
+    print("\n==== Cadastro de Novo Evento ====")
+    nome = input("Digite o nome do evento: ").strip()
+    data = input("Digite a data do evento (dd/mm/aaaa): ").strip()
+    tema = input("Digite o tema do evento: ").strip()
+    local = input("Digite o local do evento: ").strip()
+   
+   #partricipantes
+    ids = input("Digite os IDs dos participantes (separados por virgula): ").strip()
+    lista_ids = []
+    if ids:
+        try:
+            lista_ids = [int(id.strip()) for id in ids.split(',') if int(id.strip()) if participantes]
+        except ValueError:
+            print("IDs inválidos. Certifique-se de digitar números inteiros separados por vírgula.")
+            lista_ids = []
+    
+    novo_evento = {
+        'nome': nome,
+        'data': data,
+        'tema': tema,
+        'local': local,
+        'participantes': lista_ids
+    }
+    eventos.append(novo_evento)
+    print(f"\nEvento '{nome}' cadatrado com sucesso!")
+    
