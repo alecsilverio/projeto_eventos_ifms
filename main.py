@@ -1,4 +1,4 @@
-from funcoes import listar_eventos_participantes, buscar_participantes_por_codigo, cadastrar_novo_participante, editar_participante 
+from funcoes import listar_eventos_participantes, buscar_participantes_por_codigo, cadastrar_novo_participante, editar_participante, mostrar_estatisticas 
 
 def exibir_menu():
     print("==== Sistema de Gerenciamento de Eventos ====")
@@ -6,7 +6,7 @@ def exibir_menu():
     print("2. Buscar participante por código")
     print("3. Cadastrar novo participante")
     print("4. Editar dados de um participante")
-
+    print("5. Mostrar estatísticas dos eventos")
     print( "0. Sair")
     
 def main():
@@ -22,6 +22,8 @@ def main():
             cadastrar_novo_participante()
         elif opcao == "4":
             editar_participante()
+        elif opcao == "5":
+            mostrar_estatisticas()
         elif opcao == "0":
             print("Saindo do Sistema...")
             break

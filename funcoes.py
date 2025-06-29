@@ -1,4 +1,5 @@
-    # Função para listar eventos e seus participantes
+
+# Função para listar eventos e seus participantes
 from dados import eventos, participantes
 
 def listar_eventos_participantes():
@@ -10,6 +11,8 @@ def listar_eventos_participantes():
         nomes = ", ".join([participantes[id]['nome'] for id in evento['participantes']])
         print(f"Participantes: {nomes}")
         print("-" * 40)
+
+#------------------------------------------------------------------
 
 # Buscar participante por código
 from dados import participantes, eventos
@@ -41,6 +44,8 @@ def buscar_participantes_por_codigo():
     else: 
         print("Este participante ainda não está inscrito em nenhum evento.")
     
+#------------------------------------------------------------------
+
 # funçao para cadastrar novo participante
 from dados import eventos, participantes
 def cadastrar_novo_participante():
@@ -67,6 +72,8 @@ def cadastrar_novo_participante():
         print(f"\nParticipante {nome} cadastrado e inscrito no evento com sucesso!\n")
     except (ValueError, IndexError):
         print("Evento inválido. Participante cadastrado, mas não está inscrito em nenhum evento.")
+
+#------------------------------------------------------------------
 
 # função para editar dados dos participantes
 from dados import participantes 
@@ -99,4 +106,45 @@ def editar_participante():
         participante['preferencias'] = [p.strip() for p in novas_preferencias.split(',')]   
     
     print("\nDados atualizados com sucesso!")
+
+#------------------------------------------------------------------
+ 
+# função mostrar estatísticas 
+from collections import Counter
+from dados import eventos, participantes
+
+def mostrar_estatisticas():
+    print("\n==== Estatísticas dos Eventos ====")
     
+    # participantes mais ativos
+    contagem_participantes = Counter()
+    for evento in eventos:
+        contagem_participantes.update(evento['participantes'])
+        
+    mais_ativos = contagem_participantes.most_common(3)
+    print("Participantes mais ativos:")
+    for id_part, total in mais_ativos:
+        nome = participantes[id_part]['nome']
+        print(f" - {nome}: inscrito em {total} eventos(s)")
+    
+    print()
+    
+    # temas mais frequentes
+    contagem_temas = Counter()
+    for evento in eventos:
+        contagem_temas[evento['tema']] += 1
+        
+    print("Temas mais frequentes:")
+    for tema, total in contagem_temas.most_common():
+        print(f" - {tema}: {total} evento(s)")
+
+    print()
+    
+#------------------------------------------------------------------
+
+
+
+        
+        
+        
+        
