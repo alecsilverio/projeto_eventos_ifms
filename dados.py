@@ -43,15 +43,7 @@ participantes[proximo_id] = novo_participante
 eventos[0]['participantes'].append(proximo_id)
 proximo_id += 1 # Atualiza o ID para o próximo participante
 
-# listando os participantes em cada evento
 
-for evento in eventos:
-    print(f"Evento: {evento['nome']}")
-    print(f"Data: {evento['data']}")
-    print(f"Tema: {evento['tema']}")
-    print(f"Local: {evento['local']}")
-    print(f"Participantes: {', '.join([participantes[id]['nome'] for id in evento['participantes']])}")
-    print("-" * 40) 
     
     
     

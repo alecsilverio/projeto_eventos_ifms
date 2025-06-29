@@ -1,8 +1,9 @@
-from funcoes import listar_eventos_participantes
+from funcoes import listar_eventos_participantes, buscar_participantes_por_codigo
 
 def exibir_menu():
     print("==== Sitema de Gerenciamento de Eventos ====")
     print("1. Listar eventos e participantes")
+    print("2. Buscar participante por código")
     print( "0. Sair")
     
 def main():
@@ -12,12 +13,16 @@ def main():
         
         if opcao == "1":
             listar_eventos_participantes()
+        elif opcao == "2":
+            buscar_participantes_por_codigo()
         elif opcao == "0":
             print("Saindo do Sistema...")
             break
         else:
             print("Opção inválida. Tente de novo.") 
-            
-if __name__ == " __main__":
+ 
+
+# para executar o programa
+if __name__ == "__main__": 
     main()      
         
