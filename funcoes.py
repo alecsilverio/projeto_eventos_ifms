@@ -219,4 +219,44 @@ def cadastrar_evento():
     }
     eventos.append(novo_evento)
     print(f"\nEvento '{nome}' cadatrado com sucesso!")
-    
+
+#------------------------------------------------------------------
+
+# funções para atualizar tema de um evento e atualizar email dos participantes 
+from dados import eventos     # atualizar tema de um evento 
+def atualizar_tema_evento():
+    print("\n==== Atualizar Tema de Evento ====")
+    for i, evento in enumerate(eventos, start=1):
+        print(f"{i}. {evento['nome']} (Tema atual: {evento['tema']})")
+        
+    try:
+        escolha = int(input("Digite o número do Evento que deseja atualizar:"))
+        if 1 <= escolha <= len(eventos):
+            novo_tema = input("Digite o novo tema do evento: ").strip()
+            eventos[escolha - 1]['tema'] = novo_tema
+            print("Tema atualizado com sucesso!")
+        else:
+            print("Número inválido.")
+    except ValueError:
+        print("Entrada inválida. Digite um número. ")
+
+
+from dados import participantes     # atualizar email dos participantes
+def atualizar_email_participante():
+    print("\n==== Atualizar E-mail de Participante ====")
+    try:
+        codigo = int(input("Digite o ID do participante: "))
+        if codigo not in participantes:
+            print("Participante não ncontrado. ")
+            return
+        
+        print(f"Nome: {participantes[codigo]['nome']}")
+        novo_email = input("Digite o novo e-mail: ").strip()
+        participantes[codigo]['email'] = novo_email
+        print("E-mail.atualizado co sucesso.") 
+    except ValueError:
+        print("ID inválido. Digite um número. ")
+
+#------------------------------------------------------------------
+
+        

@@ -7,6 +7,9 @@ from funcoes import (
     remover_evento, 
     remover_participante,
     cadastrar_evento,
+    atualizar_tema_evento,
+    atualizar_email_participante,
+    
     
     ) 
 
@@ -20,7 +23,8 @@ def exibir_menu():
     print("6. Remover evento")
     print("7. Remover participante")
     print("8. Cadastrar novo evento")
-
+    print("9. Atualizar tema de um evento")
+    print("10. Atualizar e-mail de um participante")
     print( "0. Sair")
     
 def main():
@@ -44,6 +48,10 @@ def main():
             remover_participante()
         elif opcao =="8":
             cadastrar_evento()
+        elif opcao == "9":
+            atualizar_tema_evento()
+        elif opcao == "10":
+            atualizar_email_participante()
         elif opcao == "0":
             print("Saindo do Sistema...")
             break
