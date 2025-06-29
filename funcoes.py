@@ -281,5 +281,51 @@ def remover_participantes_duplicados():
     else:
         print(f"{total_corrigidos} evento(s) corrigidos com sucesso.")
     
+#------------------------------------------------------------------
+
+# função para buscar eventos por tema
+from datetime import datetime
+from dados import eventos
+
+def buscar_eventos_por_tema():
+    tema_busca = input("Digite o tema que deseja buscar: ").strip().lower()
     
-    
+    encontrados = [evento for evento in eventos if tema_busca in evento['tema'].strip().lower()]
+
+    if encontrados:
+        print(f"\nEventos encontrados com tema '{tema_busca}':")
+        for evento in encontrados:
+            print(f"- {evento['nome']} ({evento['data']}) - {evento['tema']}")
+    else:
+        print("Nenhum evento encontrado com esse tema.")
+
+# função para buscar eventos por faixa de datas
+def buscar_eventos_por_faixa_de_datas():
+    print("\n==== Buscar Eventos por Faixa de Datas ====")
+    data_inicio_str = input("Digite a data inicial (dd/mm/aaaa): ").strip()
+    data_fim_str = input("Digite a data final (dd/mm/aaaa): ").strip()
+
+    try:
+        data_inicio = datetime.strptime(data_inicio_str, "%d/%m/%Y").date()
+        data_fim = datetime.strptime(data_fim_str, "%d/%m/%Y").date()
+    except ValueError:
+        print("Formato de data inválido. Use dd/mm/aaaa.")
+        return
+
+    eventos_encontrados = []
+    for evento in eventos:
+        try:
+            data_evento = datetime.strptime(evento['data'].strip(), "%d/%m/%Y").date()
+        except ValueError:
+            print(f"Data inválida no evento: {evento['nome']}")
+            continue
+
+        if data_inicio <= data_evento <= data_fim:
+            eventos_encontrados.append(evento)
+
+    if eventos_encontrados:
+        print(f"\nEventos entre {data_inicio_str} e {data_fim_str}:")
+        for evento in eventos_encontrados:
+            print(f"- {evento['nome']} em {evento['data']} ({evento['tema']})")
+    else:
+        print("Nenhum evento encontrado no intervalo informado.")

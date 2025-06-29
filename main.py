@@ -10,10 +10,13 @@ from funcoes import (
     atualizar_tema_evento,
     atualizar_email_participante,
     remover_participantes_duplicados,
+    buscar_eventos_por_tema,
+    buscar_eventos_por_faixa_de_datas,
+    
     ) 
 
 def exibir_menu():
-    print("==== Sistema de Gerenciamento de Eventos ====")
+    print("\n==== Sistema de Gerenciamento de Eventos ====")
     print("1. Listar eventos e participantes")
     print("2. Buscar participante por código")
     print("3. Cadastrar novo participante")
@@ -25,6 +28,8 @@ def exibir_menu():
     print("9. Atualizar tema de um evento")
     print("10. Atualizar e-mail de um participante")
     print("11. Remover participantes duplicados nos eventos")
+    print("12. Buscar eventos por tema")
+    print("13. Buscar eventos por faixa de data")
     print( "0. Sair")
     
 def main():
@@ -54,6 +59,10 @@ def main():
             atualizar_email_participante()
         elif opcao =="11":
             remover_participantes_duplicados()
+        elif opcao == "12":
+            buscar_eventos_por_tema()
+        elif opcao == "13":
+            buscar_eventos_por_faixa_de_datas()
         elif opcao == "0":
             print("Saindo do Sistema...")
             break
