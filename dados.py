@@ -1,10 +1,11 @@
+
 eventos = [
     {
         'nome': 'Palestra - Segurança Cibernética',
         'data': '20/05/2025',
         'tema': 'Segurança Cibernética',
         'local': 'Auditório do Ifms',
-        'participantes': [1,2,3]
+        'participantes': [1,2,2,3,1]
     },
     
     {
@@ -31,7 +32,6 @@ participantes = {
 }
 
 # para adicionar novos participantes
-
 proximo_id = 4
 novo_participante = {
     'nome': 'Lucas Pereira',

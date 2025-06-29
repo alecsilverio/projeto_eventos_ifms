@@ -259,4 +259,27 @@ def atualizar_email_participante():
 
 #------------------------------------------------------------------
 
-        
+# função para verificar se a participantes duplicados 
+from dados import eventos 
+def remover_participantes_duplicados():
+    print("\n==== Remoção de Participantes Duplicados ====")
+    total_corrigidos = 0
+
+    for evento in eventos:
+        participantes_originais = evento['participantes']
+        participantes_unicos = []
+        for id_part in participantes_originais:
+            if id_part not in participantes_unicos:
+                participantes_unicos.append(id_part)
+        if len(participantes_originais) != len(participantes_unicos):
+            evento['participantes'] = participantes_unicos
+            total_corrigidos += 1
+            print(f"- Duplicados removidos do evento: {evento['nome']}")
+
+    if total_corrigidos == 0:
+        print("Nenhum evento com participantes duplicados encontrado.")
+    else:
+        print(f"{total_corrigidos} evento(s) corrigidos com sucesso.")
+    
+    
+    
