@@ -12,11 +12,16 @@ from funcoes import (
     remover_participantes_duplicados,
     buscar_eventos_por_tema,
     buscar_eventos_por_faixa_de_datas,
+    agrupar_eventos_por_tema,
+    
     
     ) 
 
 def exibir_menu():
-    print("\n==== Sistema de Gerenciamento de Eventos ====")
+    print("\n╔════════════════════════════════════════════════╗")
+    print("║ 📆   -Sistema de Gerenciamento de Eventos-  📆 ║")
+    print("╚════════════════════════════════════════════════╝\n")
+
     print("1. Listar eventos e participantes")
     print("2. Buscar participante por código")
     print("3. Cadastrar novo participante")
@@ -30,6 +35,7 @@ def exibir_menu():
     print("11. Remover participantes duplicados nos eventos")
     print("12. Buscar eventos por tema")
     print("13. Buscar eventos por faixa de data")
+    print("14. Agrupar eventos por tema")
     print( "0. Sair")
     
 def main():
@@ -63,6 +69,8 @@ def main():
             buscar_eventos_por_tema()
         elif opcao == "13":
             buscar_eventos_por_faixa_de_datas()
+        elif opcao == "14":
+            agrupar_eventos_por_tema()
         elif opcao == "0":
             print("Saindo do Sistema...")
             break

@@ -329,3 +329,36 @@ def buscar_eventos_por_faixa_de_datas():
             print(f"- {evento['nome']} em {evento['data']} ({evento['tema']})")
     else:
         print("Nenhum evento encontrado no intervalo informado.")
+
+#------------------------------------------------------------------
+
+# função para agrupar eventos por tema 
+from collections import defaultdict
+def agrupar_eventos_por_tema():
+    from dados import eventos 
+    temas = defaultdict(list)
+        
+    for evento in eventos:
+        temas[evento['tema']].append(evento['nome'])
+    
+    print("\n==== Eventos Agrupados por tema ====")
+    for tema, lista_eventos in temas.items():
+        print(f"\nTema: {tema}")
+        for nome in lista_eventos:
+            print(f" - {nome}")
+            
+#------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
