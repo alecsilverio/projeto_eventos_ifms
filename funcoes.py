@@ -88,7 +88,7 @@ def editar_participante():
         return
     participante = participantes[codigo]
     
-    print("\Dados atuais:")
+    print("\nDados atuais:")
     print(f"Nome: {participante['nome']}")
     print(f"E-mail: {participante['email']}")
     print(f"Preferências: {', '.join(participante['preferencias'])}")
@@ -349,10 +349,28 @@ def agrupar_eventos_por_tema():
             
 #------------------------------------------------------------------
 
+# função para listar eventos por participante
+from dados import eventos, participantes 
+def listar_eventos_por_participante():
+    try:
+        codigo = int(input("Digite o ID do participante: "))
+    except ValueError:
+        print("ID inválido. Insira um número inteiro. ")
+        return
+    if codigo not in participantes:
+        print("Participante não encontrado. ")
+        return
+    
+    participante = participantes[codigo]
+    print(f"\nEventos em que {participante['nome']} está inscrito: ")
+    
+    eventos_inscritos = [evento['nome'] for evento in eventos if codigo in evento['participantes']]
 
-
-
-
+    if eventos_inscritos:
+        for evento_nome in eventos_inscritos:
+            print(f" - {evento_nome}")
+    
+    else: print("Este participante não está inscrito em nenhum evento.")
 
 
 

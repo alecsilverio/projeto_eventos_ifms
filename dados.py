@@ -5,7 +5,7 @@ eventos = [
         'data': '20/05/2025',
         'tema': 'Segurança Cibernética',
         'local': 'Auditório do Ifms',
-        'participantes': [1,2,2,3,1]
+        'participantes': [2,2,3,]
     },
     
     {
