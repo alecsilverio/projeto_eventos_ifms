@@ -14,6 +14,7 @@ from funcoes import (
     buscar_eventos_por_faixa_de_datas,
     agrupar_eventos_por_tema,
     listar_eventos_por_participante,
+    contar_eventos_por_tema
     
     
     
@@ -38,6 +39,8 @@ def exibir_menu():
     print("13. Buscar eventos por faixa de data")
     print("14. Mostrar eventos por tema")
     print("15. Mostrar eventos por participante")
+    print("16. Mostrar quantos eventos por tema")
+    
     print( "0. Sair")
     
 def main():
@@ -76,6 +79,8 @@ def main():
             agrupar_eventos_por_tema()
         elif opcao == "15":
             listar_eventos_por_participante()
+        elif opcao == "16":
+            contar_eventos_por_tema()
         elif opcao == "0":
             print("Saindo do Sistema...")
             print("\n")

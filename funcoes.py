@@ -372,6 +372,23 @@ def listar_eventos_por_participante():
     
     else: print("Este participante não está inscrito em nenhum evento.")
 
+#------------------------------------------------------------------
+
+# função para contar quantos temas cada evento possui
+from dados import eventos
+def contar_eventos_por_tema():
+    print("==== Quantidade de Eventos por Tema ====\n")
+    contagem_temas = {}
+    
+    for evento in eventos:
+        tema =  evento['tema'] 
+        if tema in contagem_temas:
+            contagem_temas[tema] += 1
+        else:
+            contagem_temas[tema] = 1
+    
+    for tema, quantidade in contagem_temas.items():
+        print(f"Tema: {tema} - {quantidade} eventos(s).")   
 
 
 
