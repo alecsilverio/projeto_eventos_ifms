@@ -14,9 +14,8 @@ from funcoes import (
     buscar_eventos_por_faixa_de_datas,
     agrupar_eventos_por_tema,
     listar_eventos_por_participante,
-    contar_eventos_por_tema
-    
-    
+    contar_eventos_por_tema,
+    calcular_media_participantes_por_tema,
     
     ) 
 
@@ -40,6 +39,7 @@ def exibir_menu():
     print("14. Mostrar eventos por tema")
     print("15. Mostrar eventos por participante")
     print("16. Mostrar quantos eventos por tema")
+    print("17. Ver a média de participação por evento")
     
     print( "0. Sair")
     
@@ -81,6 +81,8 @@ def main():
             listar_eventos_por_participante()
         elif opcao == "16":
             contar_eventos_por_tema()
+        elif opcao == "17":
+            calcular_media_participantes_por_tema()
         elif opcao == "0":
             print("Saindo do Sistema...")
             print("\n")

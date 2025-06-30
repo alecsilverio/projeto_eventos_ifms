@@ -390,8 +390,29 @@ def contar_eventos_por_tema():
     for tema, quantidade in contagem_temas.items():
         print(f"Tema: {tema} - {quantidade} eventos(s).")   
 
+#------------------------------------------------------------------
 
+# função para calcular a média de participação por tema
+from dados import eventos
+def calcular_media_participantes_por_tema():
+    print("\n==== Média de Participação por Tema ====")
+    total_participantes = {}  # dicionário: tema -> soma de participantes
+    total_eventos = {}        # dicionário: tema -> número de eventos
 
+    for evento in eventos:
+        tema = evento['tema']
+        qtd_participantes = len(evento['participantes'])
+
+        if tema in total_participantes:
+            total_participantes[tema] += qtd_participantes
+            total_eventos[tema] += 1
+        else:
+            total_participantes[tema] = qtd_participantes
+            total_eventos[tema] = 1
+
+    for tema in total_participantes:
+        media = total_participantes[tema] / total_eventos[tema]
+        print(f"Tema: {tema} - Média de participantes: {media:.2f}")
 
 
 
