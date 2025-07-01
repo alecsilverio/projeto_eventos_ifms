@@ -16,6 +16,7 @@ from funcoes import (
     listar_eventos_por_participante,
     contar_eventos_por_tema,
     calcular_media_participantes_por_tema,
+    indentificar_eventos_para_cancelamento,
     
     ) 
 
@@ -40,14 +41,13 @@ def exibir_menu():
     print("15. Mostrar eventos por participante")
     print("16. Mostrar quantos eventos por tema")
     print("17. Ver a média de participação por evento")
-    
+    print("18. Ver eventos com baixa participação")
     print( "0. Sair")
     
 def main():
     while True:
         exibir_menu()
-        opcao = input("\nEscolha uma opção: ")
-        print("\n")
+        opcao = input("\nEscolha uma opção: \n")
         
         if opcao == "1":
             listar_eventos_participantes()
@@ -83,13 +83,14 @@ def main():
             contar_eventos_por_tema()
         elif opcao == "17":
             calcular_media_participantes_por_tema()
+        elif opcao == "18":
+            indentificar_eventos_para_cancelamento()
         elif opcao == "0":
             print("Saindo do Sistema...")
             print("\n")
             break
         else:
             print("Opção inválida. Tente de novo.") 
- 
 
 # para executar o programa
 if __name__ == "__main__": 

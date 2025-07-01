@@ -53,7 +53,7 @@ def cadastrar_novo_participante():
     
     nome = input("Digite o nome do participante:")
     email = input("Digite o email do participante:")
-    preferencias = input("Digite as preferências do partipante: ").split(',')
+    preferencias = input("Digite os temas de preferências do partipante: ").split(',')
     
     novo_id = max(participantes.keys()) + 1
     participantes[novo_id] ={
@@ -88,7 +88,7 @@ def editar_participante():
         return
     participante = participantes[codigo]
     
-    print("\nDados atuais:")
+    print("Dados atuais:\n")
     print(f"Nome: {participante['nome']}")
     print(f"E-mail: {participante['email']}")
     print(f"Preferências: {', '.join(participante['preferencias'])}")
@@ -108,13 +108,13 @@ def editar_participante():
     print("\nDados atualizados com sucesso!")
 
 #------------------------------------------------------------------
- 
+
 # função mostrar estatísticas 
 from collections import Counter
 from dados import eventos, participantes
 
 def mostrar_estatisticas():
-    print("\n==== Estatísticas dos Eventos ====")
+    print("==== Estatísticas dos Eventos ====\n")
     
     # participantes mais ativos
     contagem_participantes = Counter()
@@ -145,7 +145,7 @@ def mostrar_estatisticas():
 # função para remover eventos
 from dados import eventos
 def remover_evento():
-    print("\n==== Remover Evento ====")
+    print("==== Remover Evento ====/n")
     for i, evento in enumerate(eventos, start=1):
         print(f"{i}. {evento['nome']} ({evento['data']})")
     
@@ -163,22 +163,22 @@ def remover_evento():
 #função para remover participantes
 from dados import participantes, eventos 
 def remover_participante():
-    print("\n==== Remover Participante ====")
+    print("==== Remover Participante ====/n")
     try:
         codigo = int(input("Digite o ID do participante que deseja remover:"))
         if codigo not in participantes:
             print("Participante não encontrado.")
             return
-      
+
         nome = participantes[codigo]['nome']
         confirmacao= input(f"Tem certeza que deseja remover {nome}?  (s/n): ").lower()
         if confirmacao == 's':
-         
-             # Remover participante dos eventos
+
+            # Remover participante dos eventos
             for evento in eventos:
-                 if codigo in evento['participantes']:
-                     evento['participantes'].remove(codigo)
-                 
+                if codigo in evento['participantes']:
+                    evento['participantes'].remove(codigo)
+
             # Remover participante do dicionário
             del participantes[codigo]
             print(f"Participante '{nome}' removido com sucesso!")
@@ -199,8 +199,8 @@ def cadastrar_evento():
     data = input("Digite a data do evento (dd/mm/aaaa): ").strip()
     tema = input("Digite o tema do evento: ").strip()
     local = input("Digite o local do evento: ").strip()
-   
-   #partricipantes
+
+    #partricipantes
     ids = input("Digite os IDs dos participantes (separados por virgula): ").strip()
     lista_ids = []
     if ids:
@@ -341,7 +341,7 @@ def agrupar_eventos_por_tema():
     for evento in eventos:
         temas[evento['tema']].append(evento['nome'])
     
-    print("\n==== Eventos Agrupados por tema ====")
+    print("==== Eventos Agrupados por tema ====\n")
     for tema, lista_eventos in temas.items():
         print(f"\nTema: {tema}")
         for nome in lista_eventos:
@@ -395,7 +395,7 @@ def contar_eventos_por_tema():
 # função para calcular a média de participação por tema
 from dados import eventos
 def calcular_media_participantes_por_tema():
-    print("\n==== Média de Participação por Tema ====")
+    print("==== Média de Participação por Tema ====\n")
     total_participantes = {}  # dicionário: tema -> soma de participantes
     total_eventos = {}        # dicionário: tema -> número de eventos
 
@@ -415,6 +415,24 @@ def calcular_media_participantes_por_tema():
         print(f"Tema: {tema} - Média de participantes: {media:.2f}")
 
 
+#------------------------------------------------------------------
 
+# função para possível cancelamento de eventos se não houver mais de 2 participantes
+from dados import eventos 
+def indentificar_eventos_para_cancelamento():
+    print("\n==== Eventos com menos de 2 participantes ====\n")
+    cancelaveis = [evento for evento in eventos if len(evento['participantes']) < 2]
 
+    if cancelaveis:
+        print("Eventos com baixa participação:")
+    
+        for evento in cancelaveis:
+            print(f" - {evento['nome']} em {evento['data']} ({evento['tema']})")
+    else:
+        print("Todos os eventos têm 2 ou mais participantes.")
+        
+
+#------------------------------------------------------------------
+
+#
 
