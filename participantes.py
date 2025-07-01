@@ -64,7 +64,7 @@ def cadastrar_novo_participante():
 from dados import participantes 
 def editar_participante():
     try:
-        codigo = int(input("Digite o ID do participante que deseja editar: "))
+        codigo = int(input("\nDigite o ID do participante que deseja editar: "))
     except ValueError:
         print("ID inválido. ")
         return
@@ -107,7 +107,7 @@ def atualizar_email_participante():
         print(f"Nome: {participantes[codigo]['nome']}")
         novo_email = input("Digite o novo e-mail: ").strip()
         participantes[codigo]['email'] = novo_email
-        print("E-mail.atualizado co sucesso.") 
+        print("E-mail atualizado com sucesso.") 
     except ValueError:
         print("ID inválido. Digite um número. ")
         
@@ -116,7 +116,7 @@ def atualizar_email_participante():
 #função para remover participantes
 from dados import participantes, eventos 
 def remover_participante():
-    print("==== Remover Participante ====/n")
+    print("\n==== Remover Participante ====\n")
     try:
         codigo = int(input("Digite o ID do participante que deseja remover:"))
         if codigo not in participantes:
@@ -148,7 +148,7 @@ def remover_participante():
 from dados import eventos, participantes 
 def listar_eventos_por_participante():
     try:
-        codigo = int(input("Digite o ID do participante: "))
+        codigo = int(input("\nDigite o ID do participante: "))
     except ValueError:
         print("ID inválido. Insira um número inteiro. ")
         return

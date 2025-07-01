@@ -48,7 +48,7 @@ def cadastrar_evento():
 # função para remover eventos
 from dados import eventos
 def remover_evento():
-    print("==== Remover Evento ====/n")
+    print("\n==== Remover Evento ====\n")
     for i, evento in enumerate(eventos, start=1):
         print(f"{i}. {evento['nome']} ({evento['data']})")
     
@@ -56,6 +56,7 @@ def remover_evento():
         escolha = int(input("Digite o número do evento que deseja remover:"))
         if 1 <= escolha <= len(eventos):
             eventos_removido = eventos.pop(escolha - 1)
+            print("Evento removido com sucesso!")
         else: 
             print("Número invalido.")
     except ValueError:
@@ -143,7 +144,7 @@ def agrupar_eventos_por_tema():
     for evento in eventos:
         temas[evento['tema']].append(evento['nome'])
     
-    print("==== Eventos Agrupados por tema ====\n")
+    print("\n==== Eventos Agrupados por tema ====\n")
     for tema, lista_eventos in temas.items():
         print(f"\nTema: {tema}")
         for nome in lista_eventos:

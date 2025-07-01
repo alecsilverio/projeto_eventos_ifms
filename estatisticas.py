@@ -4,7 +4,7 @@ from collections import Counter
 from dados import eventos, participantes
 
 def mostrar_estatisticas():
-    print("==== Estatísticas dos Eventos ====\n")
+    print("\n==== Estatísticas dos Eventos ====\n")
     
     # participantes mais ativos
     contagem_participantes = Counter()
@@ -35,7 +35,7 @@ def mostrar_estatisticas():
 # função para calcular a média de participação por tema
 from dados import eventos
 def calcular_media_participantes_por_tema():
-    print("==== Média de Participação por Tema ====\n")
+    print("\n==== Média de Participação por Tema ====\n")
     total_participantes = {}  # dicionário: tema -> soma de participantes
     total_eventos = {}        # dicionário: tema -> número de eventos
 
@@ -59,7 +59,7 @@ def calcular_media_participantes_por_tema():
 # função para contar quantos temas cada evento possui
 from dados import eventos
 def contar_eventos_por_tema():
-    print("==== Quantidade de Eventos por Tema ====\n")
+    print("\n==== Quantidade de Eventos por Tema ====\n")
     contagem_temas = {}
     
     for evento in eventos:
@@ -70,7 +70,7 @@ def contar_eventos_por_tema():
             contagem_temas[tema] = 1
     
     for tema, quantidade in contagem_temas.items():
-        print(f"Tema: {tema} - {quantidade} eventos(s).")   
+        print(f"Tema: {tema} - {quantidade} evento(s).")   
 
 #------------------------------------------------------------------
 

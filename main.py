@@ -98,7 +98,7 @@ def main():
             
         elif opcao == "19":
             try:
-                codigo = int(input("\nDigite o ID do participante: "))
+                codigo = int(input("\nDigite o ID do participante:\n "))
                 gerar_certificados_participante(
                     codigo,
                     "* Certificado gerado automaticamente pelo Sistema."
