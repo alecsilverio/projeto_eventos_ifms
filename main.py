@@ -45,6 +45,8 @@ def exibir_menu():
     print( "0. Sair")
     
 def main():
+    remover_participantes_duplicados(silencioso = True)
+    
     while True:
         exibir_menu()
         opcao = input("\nEscolha uma opção: \n")
