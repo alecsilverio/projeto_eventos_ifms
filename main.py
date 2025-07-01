@@ -17,8 +17,9 @@ from funcoes import (
     contar_eventos_por_tema,
     calcular_media_participantes_por_tema,
     indentificar_eventos_para_cancelamento,
-    
     ) 
+
+from certificados import gerar_certificados_participante
 
 def exibir_menu():
     print("\n╔════════════════════════════════════════════════╗")
@@ -42,6 +43,7 @@ def exibir_menu():
     print("16. Mostrar quantos eventos por tema")
     print("17. Ver a média de participação por evento")
     print("18. Ver eventos com baixa participação")
+    print("19. Gerar certificado de participação")
     print( "0. Sair")
     
 def main():
@@ -87,6 +89,17 @@ def main():
             calcular_media_participantes_por_tema()
         elif opcao == "18":
             indentificar_eventos_para_cancelamento()
+            
+        elif opcao == "19":
+            try:
+                codigo = int(input("\nDigite o ID do participante: "))
+                gerar_certificados_participante(
+                    codigo,
+                    "* Certificado gerado automaticamente pelo Sistema."
+                )
+            except ValueError:
+                print("Digite um número válido.")
+                
         elif opcao == "0":
             print("Saindo do Sistema...")
             print("\n")
